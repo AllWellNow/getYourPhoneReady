@@ -2,7 +2,6 @@
 ## English version below
 
 ---
-# PreparaIlTuoTelefono
 
 ## Panoramica del Programma
 Questo programma configura un telefono Google Pixel per:

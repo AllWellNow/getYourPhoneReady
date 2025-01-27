@@ -5,9 +5,7 @@ This program configures a Google Pixel phone to:
 - Remove all apps.
 - Install a single APK.
 - Disable the front camera while keeping the rear camera functional.
-- Customize the boot animation or boot logo.
-
-All steps are automated using pre-written scripts.
+- Customize the boot animation and boot logo.
 
 ---
 
@@ -37,8 +35,8 @@ All steps are automated using pre-written scripts.
 1. On your Windows PC, run the `install-apk.bat` script.
 2. The script will:
    - Remove all apps except essential system apps.
-   - Install the provided APK (`app-chat.apk`).
-   - Reboot the device automatically.
+   - Install the provided APK - specify the path to the APK by modifying APK_PATH variable.
+   - Device will be rebooted after.
 
 ---
 
@@ -57,9 +55,9 @@ All steps are automated using pre-written scripts.
 2. Run the `change-bootanimation.bat` script.
 
 #### Replace the Boot Logo:
-1. Place your custom `new_logo.img` file in the same directory as this README.
-2. Run the following commands:
+1. The custom boot logo (`logo.img`) is included in this repository.
+2. Change directory (terminal command 'cd') to this folder on your PC and run the following commands:
    ```batch
-   adb push new_logo.img /sdcard/
-   adb shell su -c "dd if=/sdcard/new_logo.img of=/dev/block/bootdevice/by-name/logo"
+   adb push logo.img /sdcard/
+   adb shell su -c "dd if=/sdcard/logo.img of=/dev/block/bootdevice/by-name/logo"
    adb reboot

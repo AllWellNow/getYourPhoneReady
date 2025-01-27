@@ -1,5 +1,73 @@
 # getYourPhoneReady
+## English version below
 
+---
+# PreparaIlTuoTelefono
+
+## Panoramica del Programma
+Questo programma configura un telefono Google Pixel per:
+- Rimuovere tutte le app.
+- Installare un unico APK.
+- Disabilitare la fotocamera frontale mantenendo attiva quella posteriore.
+- Personalizzare l'animazione e il logo di avvio.
+
+---
+
+## Requisiti
+- Un **telefono Google Pixel con root**.
+- Un **PC Windows**.
+- Un **cavo USB**.
+- **Strumenti ADB e Fastboot** installati sul PC Windows.
+- I seguenti file (inclusi in questo repository):
+  1. `install-apk.bat`
+  2. `change-bootanimation.bat`
+  3. `disable-front-camera.bat`
+
+---
+
+## Istruzioni Passo-Passo
+
+### 1. Prepara il Telefono
+1. Sblocca il telefono e abilita le Opzioni Sviluppatore:
+   - Vai su **Impostazioni** > **Info sul telefono** > Tocca **Numero build** 7 volte.
+   - In **Impostazioni**, abilita **Debug USB** nelle Opzioni Sviluppatore.
+2. Collega il telefono al PC utilizzando un cavo USB.
+
+---
+
+### 2. Rimuovi Tutte le App e Installa l'APK
+1. Sul tuo PC Windows, esegui lo script `install-apk.bat`.
+2. Lo script eseguirà le seguenti operazioni:
+   - Rimuove tutte le app, ad eccezione delle app di sistema essenziali.
+   - Installa l'APK fornito - specifica il percorso dell'APK modificando la variabile APK_PATH.
+   - Il dispositivo verrà riavviato al termine.
+
+---
+
+### 3. Disabilita la Fotocamera Frontale
+1. Esegui lo script `disable-front-camera.bat`.
+2. Questo script eseguirà le seguenti operazioni:
+   - Disabilita la fotocamera frontale rinominando il file del driver.
+   - Garantisce che solo la fotocamera posteriore rimanga funzionante.
+3. Riavvia il dispositivo se richiesto.
+
+---
+
+### 4. Cambia l'Animazione di Avvio
+#### Sostituisci l'Animazione di Avvio:
+1. Posiziona il tuo file personalizzato `bootanimation.zip` nella stessa directory di `change-bootanimation.bat`.
+2. Esegui lo script `change-bootanimation.bat`.
+
+#### Sostituisci il Logo di Avvio:
+1. Il logo di avvio personalizzato (`logo.img`) è incluso in questo repository.
+2. Cambia directory (comando terminale 'cd') in questa cartella sul tuo PC ed esegui i seguenti comandi:
+   ```batch
+   adb push logo.img /sdcard/
+   adb shell su -c "dd if=/sdcard/logo.img of=/dev/block/bootdevice/by-name/logo"
+   adb reboot
+
+
+# English
 ## Program Overview
 This program configures a Google Pixel phone to:
 - Remove all apps.

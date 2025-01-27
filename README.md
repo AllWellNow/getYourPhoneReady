@@ -1,5 +1,5 @@
 # getYourPhoneReady
-## English version below
+English version below
 
 ---
 
